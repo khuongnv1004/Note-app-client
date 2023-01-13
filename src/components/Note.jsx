@@ -5,13 +5,10 @@ import draftjsToHtml from 'draftjs-to-html';
 import { convertToRaw } from 'draft-js';
 import { convertFromHTML } from 'draft-js';
 import { ContentState } from 'draft-js';
+import { useLoaderData, useParams } from 'react-router-dom';
 
 export default function Note() {
-
-    const note = {
-        id:'111',
-        content:'<p>This is content</p>'
-    };
+    const {note} = useLoaderData()
     const [editorState, setEditorState] = useState(()=>{
         EditorState.createEmpty()
     })
@@ -33,8 +30,6 @@ export default function Note() {
     },[note.content])
 
     useEffect(()=>{
-        
-
         setRawHTML(note.content)
     },[note.content])
   return (

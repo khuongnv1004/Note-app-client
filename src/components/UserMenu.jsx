@@ -1,6 +1,7 @@
 import { Avatar, Menu, MenuItem, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 
 export default function UserMenu() {
@@ -13,6 +14,7 @@ export default function UserMenu() {
 
   const handleLogout = ()=>{
       auth.signOut();
+    
   }
 
   const handleClose = ()=>{

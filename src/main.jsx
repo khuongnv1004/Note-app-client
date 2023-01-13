@@ -13,9 +13,7 @@ import { Container } from "@mui/system";
 import './firebase/config'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
     <Container>
       <RouterProvider router={router} />
     </Container>
-  </React.StrictMode>
 );
