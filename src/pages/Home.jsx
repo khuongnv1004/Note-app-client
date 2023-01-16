@@ -13,7 +13,7 @@ export default function Home() {
       <Typography variant="h4" sx={{ mb: "20px" }}>
         Note App
       </Typography>
-      <Box sx={{ display: "flex", jutifyContent: "right", mb: "10px" }}>
+      <Box sx={{ display: "flex", justifyContent:'right', mb: "10px" }}>
         <UserMenu />
       </Box>
       <Grid
