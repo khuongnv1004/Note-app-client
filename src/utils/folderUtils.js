@@ -8,8 +8,7 @@ export const folderLoader = async () => {
         createdAt
       }
     }`;
-    const {data}  = await graphqlRequest({query})
-    console.log(data);
+    const {data, message}  = await graphqlRequest({query})
     return data;
 };
 
@@ -25,5 +24,25 @@ export const addNewFolder = async (newFolder) => {
   }`;
   const {data}  = await graphqlRequest({query, variables:{name:newFolder.name}})
   console.log(data);
+  return data;
+}
+
+export const deleteFolder = async (folderId) => {
+  const query = `mutation Mutation($id:String!) {
+    deleteFolder(id: $id){
+      name
+    }
+  }`;
+  const {data}  = await graphqlRequest({query, variables:{id:folderId}})
+  return data;
+}
+
+export const deleteNotebyFolder = async (folderId) => {
+  const query = `mutation Mutation($id:String!) {
+    deleteNotebyFolder(id: $id){
+      content
+    }
+  }`;
+  const {data}  = await graphqlRequest({query, variables:{id:folderId}})
   return data;
 }
