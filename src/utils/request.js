@@ -14,6 +14,7 @@ export const graphqlRequest = async ( payload,options={})=>{
 
           if(!res.ok){
               if(res.status === 403){
+                  window.location.replace('/login')
                   return null
               }
           }

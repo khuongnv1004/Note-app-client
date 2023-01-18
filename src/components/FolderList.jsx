@@ -9,29 +9,22 @@ import {
 import { CreateNewFolderOutlined, Delete } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import NewFolder from "./NewFolder";
 import { deleteFolder, deleteNotebyFolder } from "../utils/folderUtils";
 
 export default function FolderList({ folders }) {
   const { folderId } = useParams();
   const [activeFolderId, setActiveFolderId] = useState(folderId);
-  const [isShow, setIsShow] = useState(false);
   const navigate = useNavigate();
-
-  const handleShow = ()=>{
-    setIsShow(true)
-  }
-
-  const handleHide = ()=>{
-    setIsShow(false)
-  }
+  const [searchParam,setSearchParam] = useSearchParams()
 
   const handleDeleteFolder = async ()=>{
+    // setSearchParam({delete:'delete-folder'})
     await deleteNotebyFolder(folderId);
     await deleteFolder(folderId);
-    // navigate('/')
-    // window.location.reload();
+    navigate('/')
+    window.location.reload()
 
   }
   return (
@@ -74,9 +67,6 @@ export default function FolderList({ folders }) {
                 backgroundColor:
                   id === activeFolderId ? "rgb(250, 218, 157)" : null,
               }}
-              onMouseOver={handleShow}
-              onMouseLeave={handleHide}
-              
             >
               <CardContent
                 sx={{ ":last-child": { pb: "10px", padding: "10px" }, display:'flex', justifyContent:'space-between', height:'60px', alignItems:'center'  }}
