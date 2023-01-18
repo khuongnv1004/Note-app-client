@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 
 export const graphqlRequest = async ( payload,options={})=>{
     if(localStorage.getItem('accessToken')){
@@ -15,8 +14,6 @@ export const graphqlRequest = async ( payload,options={})=>{
 
           if(!res.ok){
               if(res.status === 403){
-                const navigate = useNavigate();
-                navigate('/login')
                   return null
               }
           }
